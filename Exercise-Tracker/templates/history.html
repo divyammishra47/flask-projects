@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercise Tracker - History</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Ysabeau+SC:wght@200;300;400;600&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <style>
+            table {
+                background-color: #333333;
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            th, td {
+                color: white;
+                background-color: #222222;
+                padding: 8px;
+                text-align: left;
+                border-bottom: 10px solid #ddd;
+            }
+
+            th {
+                color: aquamarine;
+                background-color: #090909;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="nav">
+            <nav>
+                <div class="title">
+                    EXERCISE TRACKER
+                </div>
+                <form action="{{ url_for('home') }}" method="GET">
+                    <button type="submit" class="logout-button">Home</button>
+                </form>
+            </nav>
+        </div>
+        <table class="historytable">
+            <tr>
+                <th>Exercise Name</th>
+                <th>Sets</th>
+                <th>Weight</th>
+            </tr>
+            {% for workout in workout_history %}
+            <tr>
+                <td>{{ workout[0] }}</td>
+                <td>{{ workout[1] }}</td>
+                <td>{{ workout[2] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <div class="footer">
+            Copyright &copy; workouttracker
+        </div>
+    </body>
+</html>

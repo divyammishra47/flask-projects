@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise Tracker - Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ysabeau+SC:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="page-container">
+
+        <div class="nav">
+
+            <nav>
+                <div class="title">
+                    EXERCISE TRACKER
+                </div>
+                <form action="{{url_for('signup')}}" method="GET">
+                    <button type="submit" class="signup-button">Sign Up</button>
+                </form>
+            </nav>
+        </div>
+        <div class="banner">
+            <div class="heading">
+                <b>Welcome to gym tracking web</b>
+                <br>
+                <small>Track your daily workout!</small>
+            </div>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                <p class="error">{{ message }}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% endwith %}
+            <div class="loginpage">
+                <form method="POST" action="{{ url_for('login') }}" class="loginitems">
+                    <div>
+                        <label for="username" class="user1"><b>Username:</b></label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    <div>
+                        <label for="password" class="pass1"><b>Password:</b></label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    
+            
+                    <button type="submit" class="login-button">Login</button>
+                    
+                </form>
+            </div>
+        </div>
+        
+    </div>
+
+    
+
+    
+    <div class="footer">
+        Copyright &copy; workouttracker
+    </div>
+</body>
+</html>
